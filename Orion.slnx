@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="Orion.Android/Orion.Android.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="Orion.Browser/Orion.Browser.csproj" />
+  <Project Path="Orion.Desktop/Orion.Desktop.csproj" />
+  <Project Path="Orion/Orion.csproj" />
+</Solution>

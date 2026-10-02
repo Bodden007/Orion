@@ -1,0 +1,101 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:Orion.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Orion.Views.MainView"
+             x:DataType="vm:MainViewModel">
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+        to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainViewModel />
+    </Design.DataContext>
+
+    <!--FIXME ShowGridLines="True"-->
+    <Grid ColumnDefinitions="*,*"
+          Background="{StaticResource MainBackgroundBrush}">
+
+
+        <!-- Левая половина -->
+        <Grid Grid.Column="0"
+              RowDefinitions="*,*,*,*">
+
+            <!--Объем цемента-->
+            <Border Grid.Row="0" Classes="hmi-border">
+                <Button Classes="hmi-button" Background="{StaticResource PanelBrush}">
+                    <Grid RowDefinitions="*,3*">
+                        <TextBlock Grid.Row="0" Classes="hmi-parameter-name" Text="ОБЪЕМ ЦЕМЕНТА"/>
+                        <TextBlock Grid.Row="1" Classes="hmi-parameter-value" Text="1,5 BBL"/>
+                    </Grid>
+
+                </Button>
+            </Border>
+
+            <Border Grid.Row="1" Classes="hmi-border">
+                <Button Classes="hmi-button" Background="{StaticResource PanelBrush}">
+
+                </Button>
+            </Border>
+
+            <Border Grid.Row="2" Classes="hmi-border">
+                <Button Classes="hmi-button" Background="{StaticResource PanelBrush}">
+
+                </Button>
+            </Border>
+
+            <Border Grid.Row="3" Classes="hmi-border">
+                <Button Classes="hmi-button" Background="{StaticResource PanelBrush}">
+
+                </Button>
+            </Border>
+
+        </Grid>
+
+        <!-- Правая половина -->
+        <Grid Grid.Column="1"
+              RowDefinitions="*,2*,*"
+              ColumnDefinitions="*,*"
+              ShowGridLines="True">
+
+            <Border Grid.Row="0" Grid.Column="0" Classes="hmi-border">
+                <Button Classes="hmi-button" Background="{StaticResource AutoBrush}">
+                    <TextBlock Classes="hmi-control-button-text"  Text="AUTO"/>
+                </Button>
+            </Border>
+
+            <Border Grid.Row="0" Grid.Column="1" Classes="hmi-border">
+                <Button Classes="hmi-button" Background="{StaticResource RunBrush}">
+                    <TextBlock Classes="hmi-control-button-text"  Text="RUN"/>
+                </Button>
+            </Border>
+
+            <Border Grid.Row="2" Grid.Column="0" Classes="hmi-border">
+                <Button Classes="hmi-button" Background="{StaticResource AlarmBrush}">
+                    <Path x:Name="AlarmIcon"
+                          Width="38"
+                          Height="43"
+                          Stretch="Uniform"
+                          Stroke="{StaticResource AlarmIconBrush}"
+                          StrokeThickness="6"
+                          Data="M 6,32 L 6,17 C 6,3 29,3 29,17 L 29,32
+                          M 1,33 L 34,33
+                          M 13,39 C 13,43 23,43 23,39
+                          M 17,5 L 17,1" />
+                </Button>
+            </Border>
+
+            <Border Grid.Row="2" Grid.Column="1" Classes="hmi-border">
+                <Button Classes="hmi-button" Background="{StaticResource PanelBrush}">
+                    <Grid RowDefinitions="2*,*">
+                        <TextBlock Grid.Row="0" Classes="hmi-menu-title" Text="МЕНЮ"/>
+
+                        <TextBlock Grid.Row="1" Classes="hmi-clock" Text="14:15"/>
+                    </Grid>
+
+                </Button>
+            </Border>
+
+        </Grid>
+    </Grid>
+</UserControl>

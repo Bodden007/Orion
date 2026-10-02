@@ -1,0 +1,32 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Основной фон -->
+    <SolidColorBrush x:Key="MainBackgroundBrush"
+                     Color="#34434C" />
+
+    <!-- Фон информационных карточек -->
+    <SolidColorBrush x:Key="PanelBrush"
+                     Color="#DCE8EF" />
+
+    <!-- Границы -->
+    <SolidColorBrush x:Key="BorderBrush"
+                     Color="#818071" />
+
+    <!-- AUTO -->
+    <SolidColorBrush x:Key="AutoBrush"
+                     Color="#0B85AA" />
+
+    <!-- RUN -->
+    <SolidColorBrush x:Key="RunBrush"
+                     Color="#0BAA32" />
+
+    <!-- Alarm -->
+    <SolidColorBrush x:Key="AlarmBrush"
+                     Color="#7A2638" />
+
+    <!-- Иконка Alarm -->
+    <SolidColorBrush x:Key="AlarmIconBrush"
+                     Color="#009D31" />
+
+</ResourceDictionary>
