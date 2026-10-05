@@ -1,0 +1,16 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Прогресс выполнения -->
+    <Style Selector="ProgressBar.hmi-progress">
+        <Setter Property="Minimum" Value="0" />
+        <Setter Property="Maximum" Value="100" />
+
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+
+        <Setter Property="Background" Value="{StaticResource MainBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource RunBrush}" />
+    </Style>
+
+</Styles>

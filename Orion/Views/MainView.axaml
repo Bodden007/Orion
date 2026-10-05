@@ -21,32 +21,48 @@
         <Grid Grid.Column="0"
               RowDefinitions="*,*,*,*">
 
-            <!--Объем цемента-->
+            <!--NOTE Объем цемента-->
             <Border Grid.Row="0" Classes="hmi-border">
                 <Button Classes="hmi-button" Background="{StaticResource PanelBrush}">
                     <Grid RowDefinitions="*,3*">
                         <TextBlock Grid.Row="0" Classes="hmi-parameter-name" Text="ОБЪЕМ ЦЕМЕНТА"/>
-                        <TextBlock Grid.Row="1" Classes="hmi-parameter-value" Text="1,5 BBL"/>
+                        <TextBlock Grid.Row="1" Classes="hmi-parameter-value"
+                                   Text="{Binding CementVolume, StringFormat='{}{0:F1} BBL'}"/>
                     </Grid>
-
                 </Button>
             </Border>
 
+
+            <!--NOTE Расход цемента-->
             <Border Grid.Row="1" Classes="hmi-border">
                 <Button Classes="hmi-button" Background="{StaticResource PanelBrush}">
-
+                    <Grid RowDefinitions="*,3*">
+                        <TextBlock Grid.Row="0" Classes="hmi-parameter-name" Text="РАСХОД ЦЕМЕНТА"/>
+                        <TextBlock Grid.Row="1" Classes="hmi-parameter-value"
+                                   Text="{Binding CementFlow, StringFormat='{}{0:F1} BPM'}"/>
+                    </Grid>
                 </Button>
             </Border>
 
+            <!--NOTE Объем насос-->
             <Border Grid.Row="2" Classes="hmi-border">
                 <Button Classes="hmi-button" Background="{StaticResource PanelBrush}">
-
+                    <Grid RowDefinitions="*,3*">
+                        <TextBlock Grid.Row="0" Classes="hmi-parameter-name" Text="ОБЪЕМ НАСОС"/>
+                        <TextBlock Grid.Row="1" Classes="hmi-parameter-value"
+                                   Text="{Binding PumpVolume, StringFormat='{}{0:F1} L'}"/>
+                    </Grid>
                 </Button>
             </Border>
 
+            <!--NOTE Расход насос-->
             <Border Grid.Row="3" Classes="hmi-border">
                 <Button Classes="hmi-button" Background="{StaticResource PanelBrush}">
-
+                    <Grid RowDefinitions="*,3*">
+                        <TextBlock Grid.Row="0" Classes="hmi-parameter-name" Text="РАСХОД НАСОС"/>
+                        <TextBlock Grid.Row="1" Classes="hmi-parameter-value"
+                                   Text="{Binding PumpFlow, StringFormat='{}{0:F1} L/M'}"/>
+                    </Grid>
                 </Button>
             </Border>
 
@@ -55,21 +71,72 @@
         <!-- Правая половина -->
         <Grid Grid.Column="1"
               RowDefinitions="*,2*,*"
-              ColumnDefinitions="*,*"
-              ShowGridLines="True">
+              ColumnDefinitions="*,*">
 
+            <!--NOTE AUTO-->
             <Border Grid.Row="0" Grid.Column="0" Classes="hmi-border">
                 <Button Classes="hmi-button" Background="{StaticResource AutoBrush}">
                     <TextBlock Classes="hmi-control-button-text"  Text="AUTO"/>
                 </Button>
             </Border>
 
+            <!--NOTE RUN-->
             <Border Grid.Row="0" Grid.Column="1" Classes="hmi-border">
                 <Button Classes="hmi-button" Background="{StaticResource RunBrush}">
                     <TextBlock Classes="hmi-control-button-text"  Text="RUN"/>
                 </Button>
             </Border>
 
+            <!--NOTE Прогресс-->
+            <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                  RowDefinitions="2*,*,2*,*,2*,*,2*,*,2*,*,2*,*,2*,*"
+                  ColumnDefinitions="2*,3*,*">
+
+                <!--NOTE Ход вполнения-->
+                <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+                           Classes="hmi-progres"
+                           Text="Ход выполнения" />
+
+                <!--NOTE Стадия-->
+                <TextBlock Grid.Row="2" Grid.Column="0" Classes="hmi-progres" Text="Стадия" />
+                <ProgressBar Grid.Row="2" Grid.Column="1" Classes="hmi-progress"
+                             Value="{Binding Stage}"/>
+                <TextBlock Grid.Row="2" Grid.Column="2" Classes="hmi-progres" Text="1/2" />
+
+                <!--NOTE Прогресс стадии-->
+                <TextBlock Grid.Row="4" Grid.Column="0" Classes="hmi-progres" Text="Прогресс" />
+                <ProgressBar Grid.Row="4" Grid.Column="1" Classes="hmi-progress"
+                             Value="{Binding StageProgress}"/>
+                <TextBlock Grid.Row="4" Grid.Column="2" Classes="hmi-progres"
+                           Text="{Binding StageProgress, StringFormat='{}{0:F0}%'}" />
+
+                <!--NOTE Общий-->
+                <TextBlock Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3"
+                           Classes="hmi-progres"
+                           Text="Общий" />
+
+                <!--NOTE Прогресс общий-->
+                <TextBlock Grid.Row="8" Grid.Column="0" Classes="hmi-progres" Text="Прогресс" />
+                <ProgressBar Grid.Row="8" Grid.Column="1" Classes="hmi-progress"
+                             Value="{Binding TotalProgress}"/>
+                <TextBlock Grid.Row="8" Grid.Column="2" Classes="hmi-progres"
+                           Text="{Binding TotalProgress, StringFormat='{}{0:F0}%'}" />
+
+                <!--NOTE Кран-->
+                <TextBlock Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3"
+                           Classes="hmi-progres"
+                           Text="Кран" />
+
+                <!--NOTE Прогресс кран-->
+                <TextBlock Grid.Row="12" Grid.Column="0" Classes="hmi-progres" Text="Открыт" />
+                <ProgressBar Grid.Row="12" Grid.Column="1" Classes="hmi-progress"
+                             Value="{Binding ValveProgress}"/>
+                <TextBlock Grid.Row="12" Grid.Column="2" Classes="hmi-progres"
+                           Text="{Binding ValveProgress, StringFormat='{}{0:F0}%'}" />
+
+            </Grid>
+
+            <!--NOTE Alarm-->
             <Border Grid.Row="2" Grid.Column="0" Classes="hmi-border">
                 <Button Classes="hmi-button" Background="{StaticResource AlarmBrush}">
                     <Path x:Name="AlarmIcon"
@@ -85,14 +152,13 @@
                 </Button>
             </Border>
 
+            <!--NOTE MENU-->
             <Border Grid.Row="2" Grid.Column="1" Classes="hmi-border">
                 <Button Classes="hmi-button" Background="{StaticResource PanelBrush}">
                     <Grid RowDefinitions="2*,*">
                         <TextBlock Grid.Row="0" Classes="hmi-menu-title" Text="МЕНЮ"/>
-
                         <TextBlock Grid.Row="1" Classes="hmi-clock" Text="14:15"/>
                     </Grid>
-
                 </Button>
             </Border>
 
